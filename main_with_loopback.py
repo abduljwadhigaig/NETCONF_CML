@@ -10,16 +10,12 @@ def configure_device(xml_payload,**dev_inf):
     lock.acquire()  
     global dic_name
     
-    with manager.connect(**dev_inf,hostkey_verify=False) as m:
+    with manager.connect(**dev_inf,hostkey_verify=False,timeout=1080) as m:
         # Change the hostname of the device
         m.edit_config(xml_payload,target='running')
-        time.sleep(3)
+       
         print(" configuration successful",dic_name)
-        for i in range(1,254):
-        # Change the hostname of the device
-            xml_payload1= open("loopback.xml").read().format(name=i,ip_address= i )
-            m.edit_config(xml_payload1,target='running')
-            print(" configuration Loobback ",i, "successful",dic_name)
+       
     lock.release()
     
 
