@@ -3,8 +3,7 @@
       <interface>
          <GigabitEthernet>
             <name>2</name>
-            <shutdown xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" nc:operation="delete"/>
-           <ip>
+            <ip>
                 <address>
                    <primary>
                         <address>172.30.20.21</address>
@@ -15,8 +14,7 @@
          </GigabitEthernet>
          <GigabitEthernet>
             <name>3</name>
-            <shutdown xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" nc:operation="delete"/>
-           <ip>
+            <ip>
                 <address>
                    <primary>
                         <address>10.0.12.2</address>
@@ -27,7 +25,6 @@
          </GigabitEthernet>
          <GigabitEthernet>
             <name>4</name>
-            <shutdown xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" nc:operation="delete"/>
             <ip>
                 <address>
                    <primary>
