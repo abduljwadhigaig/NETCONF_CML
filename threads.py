@@ -5,9 +5,11 @@ import time
 start = time.perf_counter()
 def configure_device(xml_payload,**dev_inf):
     # Start a network-wide transaction
+    global dic_name
     with manager.connect(**dev_inf,hostkey_verify=False) as m:
         # Change the hostname of the device
-        m.edit_config(xml_payload,target='running')
+        r = m.edit_config(xml_payload,target='running')
+        print(r,dic_name)
 
 
 threads = []
@@ -19,14 +21,16 @@ for i in dev :
     dic_name=i
     threads.append(threading.Thread(target=configure_device,args=[open(xml_file_name).read()],kwargs=eval(dic_name)))
 
-print(threads)
+
 # Start all the threads
 for t in threads:
     t.start()
 
+
 # Wait for all the threads to finish
 for t in threads:
     t.join()
+
 
 finish = time.perf_counter()
 
